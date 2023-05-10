@@ -113,7 +113,7 @@ void function10()
 
 void function11()
 {
-	int a{ 5 };
+	int a{ 5 }; 
 	a += 10;  // 15
 	a -= 3;   // 12
 	a *= 2;   // 24
@@ -466,11 +466,12 @@ void function35()
 	else cout << "У круга" << endl;
 }
 
+// Указатели и ссылки
 double FootToKm(const double& foot)
 {
 	const double km_v_foot = 0.000305;
 	double km = foot * km_v_foot;
-	return km;
+	//return km;
 };
 
 //Известны два расстояния: одно в километрах, другое — в футах 1 фут=0,305 м Какое из расстояний меньше ?
@@ -547,7 +548,7 @@ int main()
 	//function33();
 	//function34();
 	//function35();
-	//function36();
+	function36();
 	//function37();
-	function38();
+	//function38();
 }

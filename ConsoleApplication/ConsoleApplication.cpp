@@ -471,7 +471,7 @@ double FootToKm(const double& foot)
 {
 	const double km_v_foot = 0.000305;
 	double km = foot * km_v_foot;
-	//return km;
+	return km;
 };
 
 //Известны два расстояния: одно в километрах, другое — в футах 1 фут=0,305 м Какое из расстояний меньше ?

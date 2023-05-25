@@ -3,8 +3,11 @@
 #define _USE_MATH_DEFINES
 #include <cmath> 
 #include <math.h> 
+#include <iostream>
+#include <string>
+#include <stdio.h>
 //#include <conio.h> 
-//#include <windows.h> 
+#include <windows.h> 
 //#include<locale.h>
 
 
@@ -510,6 +513,129 @@ void function38()
 	if (abs(pow(n, 2) - xFourSummCubNum) < 10e-5) cout << "Ответ положительный" << endl; // n - двухзначное число
 	else cout << "Ответ отрицательный " << endl;
 }
+// ФУНКЦИИ
+//Найти периметр фигуры ABCD по заданным сторонам AB, AD и DC —
+//рис. 10.1. (Определить функцию для расчета гипотенузы прямоугольного
+//треугольника по его катетам.)
+
+double calculate_the_hypotenuse(double x, double y)
+{
+	return sqrt(x * x + y * y);
+}
+
+double calculate_the_leg(double hyp, double leg)
+{
+	return sqrt(hyp * hyp - leg * leg);
+}
+
+int function39()
+{
+	const double AB = 3;
+	const double AC = 7;
+	const double CD = 2;
+
+	double BC = calculate_the_hypotenuse(AB, AC);
+	double AD = calculate_the_leg(AC, CD);
+
+	cout << "Периметр фигуры равен: " << AB + BC + CD + AD;
+	return 0;
+}
+//Даны основания и высоты двух равнобедренных трапеций. Найти сумму их
+//периметров. (Определить функцию для расчета периметра равнобедренной
+//трапеции по ее основаниям и высоте)
+
+double perimetr(double a, double b, double h)
+{
+	return a + b + 2.0 * sqrt(h * h + (a - b) * (a - b) / 4.0);
+}
+
+int function40()
+{
+	double a1, a2, b1, b2, h1, h2, p;
+	cout << "Верхнее основание первой трапеции"; cin >> a1; cout << a1 << endl;
+	cout << "Нижнее основание первой трапеции"; cin >> b1; cout << b1 << endl;
+	cout << "Высота первой трапеции"; cin >> h1; cout << h1 << endl;
+	cout << "Верхнее основание второй трапеции"; cin >> a2; cout << a2 << endl;
+	cout << "Нижнее основание второй трапеции"; cin >> b2; cout << b2 << endl;
+	cout << "Высота второй трапеции"; cin >> h2; cout << h2 << endl;
+
+	cout << "Суммарный Периметр трапеций =" << perimetr(a1, b1, h1) + perimetr(a2, b2, h2);
+	return 0;
+}
+//Найти периметр треугольника, заданного координатами своих вершин. (Определить функцию для расчета длины отрезка по координатам его вершин.)
+
+double dist(int x1, int y1, int x2, int y2) {
+	return hypot(x1 - x2, y1 - y2);
+}
+
+double perimeter(int x1, int y1, int x2, int y2, int x3, int y3)
+{
+	return dist(x1, y1, x2, y2) + dist(x2, y2, x3, y3) + dist(x1, y1, x3, y3);
+}
+
+int function41()
+{
+	int x1, y1, x2, y2, x3, y3;
+	cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+
+	cout << "Периметр  =" << perimeter(x1, y1, x2, y2, x3, y3);
+	return 0;
+}
+//Даны шесть различных чисел. Определить максимальное из них. Определить функцию, находящую максимум из двух различных чисел.)
+
+int Max(int a, int b) 
+{
+	return a > b ? a : b;
+}
+int function42()
+{
+	int a, b, c, d, e, g;
+	cin >> a >> b >> c >> d >> e >> g;
+	int Maximum = Max(a, Max(b, Max(c, Max(d, Max(e, g)))));
+	cout << Maximum;
+	return 0;
+}
+
+//Получить все шестизначные счастливые номера. Счастливым называется  номер, у которого сумма первых трех цифр номера равна сумме последних трех цифр.
+//Использовать функцию для расчета суммы цифр трехзначного числа.
+
+int Sum3number(int n)
+{
+	return n / 100 + n / 10 % 10 + n % 10;
+}
+int function43()
+{
+	for (int n = 100000; n < 1000000; n++)
+		if (Sum3number(n % 1000) == Sum3number(n / 1000))
+			cout << n << endl;
+	system("pause");
+	return 0;
+}
+//Даны два предложения.Найти общее количество букв н в них. (Определить функцию для расчета количества букв н в предложении.)
+
+int pod(string s, char symbol)
+{
+	int k = 0;
+	for (unsigned int i = 0; i < s.length(); i++)
+		if ((int)s[i] == (int)symbol)
+			k++;
+	return k;
+}
+int function44()
+{
+	int r1, r2;
+	string s1, s2;
+	cout << "Введите первое предложение: ";
+	getline(cin, s1);
+	cout << "Введите второе предложение: ";
+	getline(cin, s2);
+	r1 = pod(s1, 'h');   //Дим, я так понимаю здесь нельзя русскую букву использовать????
+	r2 = pod(s2, 'h');
+	cout << r1 + r2;
+	return 0;
+}
+
+
 int main()
 {
 	setlocale(LC_ALL, "rus");
@@ -548,7 +674,13 @@ int main()
 	//function33();
 	//function34();
 	//function35();
-	function36();
+	//function36();
 	//function37();
 	//function38();
+	//function39();
+	//function40();
+	//function41();
+	//function42();
+	//function43();
+	function44();
 }

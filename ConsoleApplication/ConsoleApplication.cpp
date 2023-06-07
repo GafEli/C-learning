@@ -635,6 +635,35 @@ int function44()
 	return 0;
 }
 
+// Объявить два целочисленных массива  с разными размерами и написать функцию, которая заполняет их элементы значениями и 
+//показывает на экран. Функция должна принимать два параметра – массив и его размер.
+
+
+void fillAndShowArray(int arrayForFilling[], int size); //заполнить и показать массив 
+
+int function45()
+{
+	const int SIZE1 = 6;
+	const int SIZE2 = 8;
+
+	int arrayForFilling1[SIZE1] = {};
+	int arrayForFilling2[SIZE2] = {};
+
+	fillAndShowArray(arrayForFilling1, SIZE1);
+	fillAndShowArray(arrayForFilling2, SIZE2);
+	return 0;
+}
+
+void fillAndShowArray(int arrayForFilling[], int size) //Когда необходимо передать в функцию одномерный массив, при её определении надо указать пустые [ ] скобки после имени параметра, обозначающего массив. Если надо передать двумерный массив – первые квадратные скобки  оставляют пустыми, а во вторые надо внести значение.
+{
+	for (int i = 0; i < size; i++)
+	{
+		arrayForFilling[i] = i + 1;
+		cout << arrayForFilling[i] << "  ";
+	}
+	cout << endl;
+}
+
 
 int main()
 {
@@ -682,5 +711,6 @@ int main()
 	//function41();
 	//function42();
 	//function43();
-	function44();
+	//function44();
+	function45();
 }

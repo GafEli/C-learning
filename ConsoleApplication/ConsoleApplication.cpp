@@ -1,17 +1,16 @@
-﻿#include <iostream>
-#include <iomanip>
+﻿#include <iostream>// для консольного ввода-вывода
+#include <iomanip>// для форматированного вывода
 #define _USE_MATH_DEFINES
 #include <cmath> 
 #include <math.h> 
 #include <iostream>
-#include <string>
+#include <string>// для работы со строками
 #include <stdio.h>
 //#include <conio.h> 
 #include <windows.h> 
 //#include<locale.h>
 
-
-using namespace std;
+using namespace std;// подключаем стандартное пространство имен
 
 
 //  ЗАДАЧА 1.1. ВЫВЕСТИ НА ЭКРАН ЧИСЛО ПИ С ТОЧНОСТЬЮ ДО СОТЫХ
@@ -632,7 +631,7 @@ int function44()
 	r1 = pod(s1, 'h');   //Дим, я так понимаю здесь нельзя русскую букву использовать????
 	r2 = pod(s2, 'h');
 	cout << r1 + r2;
-	return 0;
+	return 0; 
 }
 
 // Объявить два целочисленных массива  с разными размерами и написать функцию, которая заполняет их элементы значениями и 
@@ -662,6 +661,70 @@ void fillAndShowArray(int arrayForFilling[], int size) //Когда необхо
 		cout << arrayForFilling[i] << "  ";
 	}
 	cout << endl;
+}
+
+// функция, печатающая значение элементов заданного массива
+
+#define N 10
+ 
+int MaxElementIndex(int[]);
+ 
+int function46()
+ {
+    int mas[N];
+ 
+    for(int i=0; i<N; i++)
+        mas[i] = i;
+ 
+    cout << MaxElementIndex(mas);
+ 
+    system("pause");
+    return 0;
+ }
+ 
+int MaxElementIndex(int mas[])
+{
+    int max_index = 0;
+    
+    for(int i=0; i<N; i++)
+        if(i>0 && mas[max_index]<mas[i])
+            max_index = i;
+ 
+    return max_index;
+}
+
+//Вычислить, не используя функцию pow, значения функции z(x, m) = xm sinm(xm), для значений аргументов :
+//x от - 1.1 до 0.3 с шагом 0.2;
+//m от 1 до 5 с шагом 1.
+
+//функция для вычисления одного цикла при фиксированном значении х
+void result(double x1, double m1, double y1, double z1);
+
+int function47()
+{
+	double x(-1.1), m(1), y(1), z(1);
+
+	for (x = -1.1; x <= 0.3; x += 0.2) {
+
+		result(x, m, y, z);
+		cout << "Вычислено при Х = " << x << endl << endl;
+	}
+	return 0;
+}
+
+void result(double x1, double m1, double y1, double z1) {
+
+	while (m1 != 5)
+	{
+		y1 *= x1;
+		for (int i = 0; i < m1; i++)
+		{
+			z1 *= sin(x1 * m1);
+		}
+		cout << "Значение функции = " << z1 * y1 << "  При m =  " << m1 << endl;
+		m1++;
+		z1 = 1;
+	}
 }
 
 
@@ -712,5 +775,7 @@ int main()
 	//function42();
 	//function43();
 	//function44();
-	function45();
+	//function45();
+	//function46();
+	function47();
 }

@@ -727,7 +727,113 @@ void result(double x1, double m1, double y1, double z1) {
 	}
 }
 
+// Случай 1. Объявление функции Length() перед ее вызовом из функции main()
+// Функция Length() получает 4 параметра: x1, y1, x2, y2
+double Length(double x1, double y1, double x2, double y2)
+{
+	// 1. Объявить внутреннюю локальную переменную len
+	double len;
 
+	// 2. Вычислить расстояние по теореме Пифагора
+	// sqrt() - функция взятия кореня из числа
+	len = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+
+	// 3. Вернуть результат из функции Length()
+	return len;
+}
+
+void function48()
+{
+	// 1. Объявить переменные
+	double x1, y1, x2, y2;
+	double len; // результат
+
+	// 2. Ввод значений переменных из клавиатури
+	cout << "Enter data: " << endl;
+	cout << "x1 = "; cin >> x1;
+	cout << "y1 = "; cin >> y1;
+	cout << "x2 = "; cin >> x2;
+	cout << "y2 = "; cin >> y2;
+
+	// 3. Вызов функции Length() из функции main()
+	// в функцию Length() передаються 4 аргумента: x1, y1, x2, y2
+	len = Length(x1, y1, x2, y2);
+
+	// 4. Вывод результата
+	cout << "length = " << len << endl;
+}
+
+// Дан двумерный массив A размерностю m*n.
+// Разработать функцию, вычисляющую сумму элементов массива
+
+// Объявить размерность массива - за пределами функции main()
+const int MAX_M = 10;
+const int MAX_N = 10;
+
+// Реализация функции
+// Двумерный массив A[][] передается с использованием константы MAX_N
+double SumArray(int m, int n, double A[][MAX_N])
+{
+	// 1. Объявить локальные переменные
+	double sum = 0; // искомая сумма
+
+	// 2. Цикл вычисления суммы
+	for (int i = 0; i < m; i++)
+		for (int j = 0; j < n; j++)
+			sum += A[i][j];
+
+	// 3. Возврат из функции
+	return sum;
+}
+
+void function49()
+{
+	// 1. Объявить переменные
+	double A[MAX_M][MAX_N]; // Двумерный массив
+	int m, n; // размерность массива
+	int i, j; // дополнительные переменные
+	double summ; // результат выполнения функции Sum()
+
+	// 2. Ввести размерность массива
+	cout << "Enter data:" << endl;
+	cout << "m = "; cin >> m;
+	cout << "n = "; cin >> n;
+
+	// 3. Проверка на корректность значений m, n
+	if ((n < 1) || (n > MAX_N) || (m < 1) || (m > MAX_M))
+	{
+		cout << "Error. Incorrect input." << endl;
+		return;
+	}
+
+	// 4. Ввод массива A
+	cout << "Enter array A:\n";
+	for (i = 0; i < m; i++)
+		for (j = 0; j < n; j++)
+		{
+			cout << "A[" << i << "][" << j << "] = ";
+			cin >> A[i][j];
+		}
+
+	// 5. Вывод массива A для проверки
+	cout << "\nEntered array A:\n";
+
+	for (i = 0; i < m; i++)
+	{
+		// вывести одну строку массива
+		for (j = 0; j < n; j++)
+		{
+			cout << A[i][j] << "\t";
+		}
+		cout << endl;
+	}
+
+	// 6. Вызов функции SumArray()
+	summ = SumArray(m, n, A);
+
+	// 7. Вывод результата на экран
+	cout << endl << "Result: summ = " << summ << endl;
+}
 int main()
 {
 	setlocale(LC_ALL, "rus");
@@ -777,5 +883,7 @@ int main()
 	//function44();
 	//function45();
 	//function46();
-	function47();
+	//function47();
+	//function48();
+	function49();
 }
